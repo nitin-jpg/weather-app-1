@@ -79,19 +79,17 @@ async function fetchForecast(lat, lon) {
   daily.forEach(day => {
     const date = new Date(day.dt_txt).toDateString().split(" ").slice(0, 3).join(" ");
     forecast.innerHTML += `
-      <div class="bg-white rounded-lg p-3 text-center text-sm shadow">
-        <p class="font-bold text-blue-800">${date}</p>
-        <img class="mx-auto w-10" src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" />
-        <p>${kelvinToC(day.main.temp)}°C</p>
-        <p>${day.main.humidity}% humidity</p>
-        <p>${day.wind.speed} m/s wind</p>
+
+      <div class="bg-blue-100 hover:bg-blue-50 rounded-lg p-3 text-center text-sm shadow">
+        <p class="font-bold text-white-800">${date}</p>  <img class=" bg-white-400 shadow rounded-lg mx-auto w-10" src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png" />
+        <p>${kelvinToC(day.main.temp)}°C</p> <p>${day.main.humidity}% humidity</p><p>${day.wind.speed} m/s wind</p>
       </div>`;
   });
 
   forecast.classList.remove("hidden");
 }
 
-// Event Listeners
+//event listener
 searchBtn.addEventListener("click", () => {
   const city = cityInput.value.trim();
   if (city) fetchWeatherData(city);
@@ -105,7 +103,9 @@ window.addEventListener("load", () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(pos => {
       const { latitude, longitude } = pos.coords;
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}
+        &lon=${longitude}
+        &appid=${apiKey}`)
         .then(res => res.json())
         .then(data => fetchWeatherData(data.name));
     }, () => {
@@ -121,12 +121,10 @@ currentLocationBtn.addEventListener("click", () => {
   }
 
   navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      const { latitude, longitude } = pos.coords;
-      fetchWeatherByCoords(latitude, longitude);
+    (pos) => {const { latitude, longitude } = pos.coords;fetchWeatherByCoords(latitude, longitude);
     },
     (err) => {
-      alert("Unable to retrieve your location. Please allow location access.");
+      alert("Unable to fetch your current location. Pleace allow location acsess");
       console.error(err);
     }
   );
