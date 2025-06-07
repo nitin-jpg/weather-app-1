@@ -12,3 +12,4 @@ Features
 - Tailwind CSS
 - JavaScript
 - used OpenWeatherMap API
+# weather-application
