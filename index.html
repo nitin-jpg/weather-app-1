@@ -9,33 +9,37 @@
   <body
     class="bg-gradient-to-tr from-sky-200 to-blue-500 min-h-screen flex items-center justify-center px-4 py-8"
   >
-    <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-xl">
-      <h1 class="text-3xl font-bold text-center mb-6 text-blue-800">
+    <div class="bg-white rounded-2xl shadow-lg p-6 w-full max-w-sm sm:max-w-xl">
+      <h1 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-blue-800">
         🌦 Weather Forecast
       </h1>
 
-      <div class="flex gap-2 mb-5 w-full items-center">
+      <!-- Input and buttons stacked for small screen -->
+      <div class="flex flex-col sm:flex-row sm:gap-2 gap-2 mb-5 w-full">
         <input
           id="cityInput"
           type="text"
           placeholder="Enter city Name"
-          class="flex-grow p-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-700"
+          class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-700"
         />
+
+        <!-- Search Button -->
         <button
           id="searchBtn"
-          class="bg-purple-700 text-white px-4 py-2 rounded hover:bg-blue-500"
+          class="w-full sm:w-auto bg-purple-700 text-white px-4 py-2 rounded hover:bg-purple-800"
         >
           Search
         </button>
-        <!-- Currentlocation-->
+
+        <!-- Current Location Button -->
         <button
           id="currentLocationBtn"
           title="Get current location weather"
-          class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 flex items-center justify-center"
+          class="w-full sm:w-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center justify-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            class="h-5 w-5"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
